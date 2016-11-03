@@ -77,6 +77,7 @@ public class ArticleService {
             return;
         }
 
+
         String id = articleId.substring(articleId.indexOf(':') + 1);
         if(redisTemplate.opsForSet().add("voted:" + id, user) == 1){
             /**
@@ -86,6 +87,7 @@ public class ArticleService {
             redisTemplate.opsForZSet().incrementScore("score:",articleId,VOTE_SCORE);
             redisTemplate.opsForHash().increment(articleId, "votes", 1);
         }
+        //上述opsForSet().add、opsForZSet().incrementScore、opsForHash().increment应该在同一个事物中，后面再讲，暂时忽略
     }
 
     /**
