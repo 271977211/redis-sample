@@ -1,4 +1,4 @@
-package cn.didadu.article;
+package cn.didadu;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,13 +10,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by zhangjing on 16-10-28.
+ * Created by zhangjing on 16-11-3.
  */
 
 @RunWith(SpringRunner.class)
 @SpringBootTest()
 public class ArticleTest {
-
     @Autowired
     private ArticleService articleService;
 
@@ -32,4 +31,5 @@ public class ArticleTest {
         articleService.addGroups("myGroup", "article:2");
         articleService.getGroupArticles("group:myGroup");
     }
+
 }

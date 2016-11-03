@@ -1,4 +1,4 @@
-package cn.didadu.article;
+package cn.didadu;
 
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
