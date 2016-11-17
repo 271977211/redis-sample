@@ -22,19 +22,6 @@ public class ArticleService {
     private RedisTemplate<String, Object> redisTemplate;
 
     /**
-     * TODO RedisTemplate<Object, Object>有问题，需要自己重新实现
-     */
-/*    public void postArticle(){
-        Article article = Article.builder()
-                .link("www.baidu.com")
-                .poster("zhangjing")
-                .time(System.nanoTime())
-                .title("this is test").build();
-
-        redisTemplate.opsForValue().set("9", article);
-    }*/
-
-    /**
      * 新增文章
      * @param poster
      * @param title
