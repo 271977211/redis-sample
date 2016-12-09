@@ -31,7 +31,7 @@ public class CommandTest {
         for(int i = 0; i < 3; i++){
            new Thread(()->{
                try {
-                   transactionService.incr();
+                   transactionService.incrByPipeline();
                } catch (InterruptedException e) {
                    e.printStackTrace();
                }
