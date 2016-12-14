@@ -13,6 +13,7 @@
         <module>shop</module>
         <module>command</module>
         <module>market</module>
+        <module>support</module>
     </modules>
 
     <parent>
