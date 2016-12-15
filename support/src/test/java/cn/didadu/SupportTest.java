@@ -30,6 +30,9 @@ public class SupportTest {
     @Autowired
     private RecentContactService recentContactService;
 
+    @Autowired
+    private AutoCompleteEmailService autoCompleteEmailService;
+
     @Test
     public void test() throws Exception {
         //logService.logRecent("test", "this is new log", "INFO");
@@ -47,14 +50,25 @@ public class SupportTest {
         //ipService.findCityByApi("183.134.104.229");
 
 
-        recentContactService.addUpdateContact("Me", "Jack");
+       /* recentContactService.addUpdateContact("Me", "Jack");
         recentContactService.addUpdateContact("Me", "Tom");
         recentContactService.addUpdateContact("Me", "Jean");
         recentContactService.addUpdateContact("Me", "Jeannie");
         recentContactService.addUpdateContact("Me", "Jeff");
 
         List<String> list = recentContactService.fetchAutocompleteList("Me", "je");
-        System.out.println(list.size());
+        System.out.println(list.size());*/
+
+        //autoCompleteEmailService.findPrefixRange("aba");
+       /* autoCompleteEmailService.joinGuild("elohim", "jack");
+        autoCompleteEmailService.joinGuild("elohim", "jean");
+        autoCompleteEmailService.joinGuild("elohim", "jeannie");
+        autoCompleteEmailService.joinGuild("elohim", "jeff");
+        autoCompleteEmailService.joinGuild("elohim", "jezz");
+        autoCompleteEmailService.joinGuild("elohim", "helen");
+        autoCompleteEmailService.joinGuild("elohim", "zoo");*/
+
+        autoCompleteEmailService.autocompleteOnPrefix("elohim", "je");
     }
 
 }
