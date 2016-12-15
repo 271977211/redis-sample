@@ -33,6 +33,12 @@ public class SupportTest {
     @Autowired
     private AutoCompleteEmailService autoCompleteEmailService;
 
+    @Autowired
+    private FirstLockService firstLockService;
+
+    @Autowired
+    private TimeoutLockService timeoutLockService;
+
     @Test
     public void test() throws Exception {
         //logService.logRecent("test", "this is new log", "INFO");
@@ -67,8 +73,13 @@ public class SupportTest {
         autoCompleteEmailService.joinGuild("elohim", "jezz");
         autoCompleteEmailService.joinGuild("elohim", "helen");
         autoCompleteEmailService.joinGuild("elohim", "zoo");*/
+        //autoCompleteEmailService.autocompleteOnPrefix("elohim", "je");
 
-        autoCompleteEmailService.autocompleteOnPrefix("elohim", "je");
+        //System.out.println(firstLockService.acquireLock("market"));
+        //firstLockService.purchaseItemWithLock("1", "1", "1");
+
+        //System.out.println(firstLockService.releaseLock("market", "0147c941-1033-4d22-b6c9-3bdeb84215e8"));
+        System.out.println(timeoutLockService.acquireLockWithTimeout("market"));
     }
 
 }
