@@ -1,14 +1,13 @@
 package cn.didadu;
 
+import cn.didadu.queue.DelayTaskQueueService;
+import cn.didadu.queue.MultiTaskQueueService;
+import cn.didadu.queue.QueueService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.util.Pair;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.io.File;
-import java.util.List;
 
 /**
  * Created by zhangjing on 16-11-3.
@@ -41,6 +40,15 @@ public class SupportTest {
 
     @Autowired
     private SemaphoreService semaphoreService;
+
+    @Autowired
+    private QueueService queueService;
+
+    @Autowired
+    private MultiTaskQueueService multiTaskQueueService;
+
+    @Autowired
+    private DelayTaskQueueService delayTaskQueueService;
 
     @Test
     public void test() throws Exception {
@@ -88,7 +96,17 @@ public class SupportTest {
 
         //System.out.println(semaphoreService.acquireFairSemaphore("semaphore:remote", 5));
         //semaphoreService.releaseFairSemaphore("semaphore:remote", "7edd9a4b-2ade-41e8-82c7-e4229cf22712");
-        System.out.println(semaphoreService.refreshFareSemaphore("semaphore:remote", "aaa"));
+        //System.out.println(semaphoreService.refreshFareSemaphore("semaphore:remote", "aaa"));
+        //queueService.sendSoldEmailViaQueue(1, "Item_M", 97, 99);
+        //queueService.processEmailQueue();
+        //multiTaskQueueService.sendTaskViaQueue("queue:email", "SendEmailTask", "1", "Item_M", "97", "99");
+        //multiTaskQueueService.sendTaskViaQueue("queue:message", "SendMessageTask", "bboyjing", "github");
+        //multiTaskQueueService.processTaskQueue(new String[]{"queue:email", "queue:message"});
+
+        /*delayTaskQueueService.sendTaskViaQueue("queue:email", "SendEmailTask",  1000 * 30, "1", "Item_M", "97", "99");
+        delayTaskQueueService.sendTaskViaQueue("queue:message", "SendMessageTask",  1000 * 60, "bboyjing", "github");
+        delayTaskQueueService.processTaskQueue();*/
+        multiTaskQueueService.processTaskQueue(new String[]{"queue:email", "queue:message"});
     }
 
 }
