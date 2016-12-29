@@ -3,6 +3,7 @@ package cn.didadu;
 import cn.didadu.queue.DelayTaskQueueService;
 import cn.didadu.queue.MultiTaskQueueService;
 import cn.didadu.queue.QueueService;
+import com.google.common.collect.Sets;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,9 @@ public class SupportTest {
 
     @Autowired
     private DelayTaskQueueService delayTaskQueueService;
+
+    @Autowired
+    private ChatService chatService;
 
     @Test
     public void test() throws Exception {
@@ -106,7 +110,12 @@ public class SupportTest {
         /*delayTaskQueueService.sendTaskViaQueue("queue:email", "SendEmailTask",  1000 * 30, "1", "Item_M", "97", "99");
         delayTaskQueueService.sendTaskViaQueue("queue:message", "SendMessageTask",  1000 * 60, "bboyjing", "github");
         delayTaskQueueService.processTaskQueue();*/
-        multiTaskQueueService.processTaskQueue(new String[]{"queue:email", "queue:message"});
+        //multiTaskQueueService.processTaskQueue(new String[]{"queue:email", "queue:message"});
+
+        chatService.createChat("jason", Sets.newHashSet("jeff", "tom"), "wenlcome to jason's chat");
+        chatService.createChat("lily", Sets.newHashSet("jeff", "alice"), "wenlcome to lily's chat");
+        chatService.sendMessage("1", "tom", "hi jeff, I'm tom.");
+        chatService.fetchPendingMessages("jeff");
     }
 
 }
